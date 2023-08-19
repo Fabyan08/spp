@@ -8,11 +8,12 @@ $tahun_bayar = $_POST['tahun_bayar'];
 $id_spp = $_POST['id_spp'];
 $jumlah_bayar = $_POST['jumlah_bayar'];
 
-include'../koneksi.php';
+include '../koneksi.php';
 $sql = "INSERT INTO pembayaran(id_petugas,nisn,tgl_bayar,bulan_bayar,tahun_bayar,id_spp,jumlah_bayar) VALUES('$id_petugas','$nisn','$tgl_bayar','$bulan_bayar','$tahun_bayar','$id_spp','$jumlah_bayar')";
 $query = mysqli_query($koneksi, $sql);
-if($query){
-    header("Location:?url=pembayaran");
-}else{
-    echo"<script>alert('Maaf data Tidak Tersimpan'); window.locatin.assign('?url=pembayaran');</script>";
+// echo $sql;
+if ($query) {
+    header("Location:?url=history-pembayaran&nisn=$nisn");
+} else {
+    echo "<script>alert('Maaf data Tidak Tersimpan'); window.locatin.assign('?url=pembayaran');</script>";
 }

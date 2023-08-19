@@ -10,11 +10,8 @@ if (mysqli_num_rows($query) > 0) {
     $data = mysqli_fetch_array($query);
     $_SESSION['nama'] = $data['nama'];
     $_SESSION['nisn'] = $data['nisn'];
-
     header('location:siswa/siswa.php');
 } else {
-    echo "<script>
-    alert('Maaf Anda Gagal Login, Silahkan Ulangi Lagi');
-    window.Location.assign('index.php');
-    </script>";
+    echo '<script>alert("NISN/NIS tidak ditemukan");
+    window.location.href="index.php"</script>';
 }

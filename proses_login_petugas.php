@@ -16,5 +16,6 @@ if (mysqli_num_rows($query) > 0) {
         header('Location:petugas/petugas.php');
     }
 } else {
-    header('Location:index2.php');
+    echo '<script>alert("Username/password tidak ditemukan");
+    window.location.href="index.php"</script>';
 }

@@ -20,9 +20,9 @@ $nisn = $_GET['nisn'];
                         <td>Tahun</td>
                         <td>Nominal</td>
                         <td>Sudah DiBayar</td>
-                        <td>Kekurangan</td>
-                        <td>Status</td>
-                        <td>History</td>
+                        <td>Tanggal</td>
+                        <td>Petugas</td>
+                        <td>Aksi</td>
                     </tr>
                 </thead>
                 <tbody>

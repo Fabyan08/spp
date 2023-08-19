@@ -5,6 +5,7 @@ if (empty($_SESSION['nisn'])) {
     window.location.href="../index.php"</script>';
 }
 ?>
+
 <?php include('../style/template/header.php') ?>
 
 <body>
@@ -15,6 +16,8 @@ if (empty($_SESSION['nisn'])) {
         <?php // include('../style/template/isi.php') 
         ?>
         <div class="main-panel">
+            <?php //include_once("../style/template/home.php") 
+            ?>
             <div class="content-wrapper">
                 <?php
                 $file = @$_GET['url'];
@@ -23,7 +26,7 @@ if (empty($_SESSION['nisn'])) {
                     include $file . '.php';
                 }
                 ?>
-                <h1><span id="typed" class="typed"></span></h1>
+                <!-- <h1><span id="typed" class="typed"></span></h1>
                 <script>
                     new Typed('#typed', {
                         strings: ['SPP SMKN 5 Malang'],
@@ -31,8 +34,5 @@ if (empty($_SESSION['nisn'])) {
                         delaySpeed: 100,
                         loop: true
                     });
-                </script>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-
+                </script> -->
                 <?php include('../style/template/footer.php') ?>

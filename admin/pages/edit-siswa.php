@@ -62,9 +62,7 @@ $data = mysqli_fetch_array($query);
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-gradient-primary btn-icon-text">
-                        <i class="mdi mdi-upload btn-icon-prepend"></i> Simpan </button>
-                    <button type="reset" class="btn btn-gradient-danger btn-icon-text">
-                        <i class="mdi mdi-reload btn-icon-prepend"></i> Kosongkan </button>
+                        <i class="mdi mdi-content-save-all btn-icon-prepend"></i> Simpan </button>
                 </div>
             </form>
         </div>

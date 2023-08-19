@@ -23,12 +23,17 @@ if ($_SESSION['level'] != 'admin') {
                 <div class="content-wrapper">
                     <?php
                     $file = @$_GET['url'];
+
                     if (empty($file)) {
                     } else {
                         include 'pages/' . $file . '.php';
                     }
                     ?>
-
+                    <style>
+                        .typed {
+                            color: orange;
+                        }
+                    </style>
                     <h1><span id="typed" class="typed"></span></h1>
                     <script>
                         new Typed('#typed', {

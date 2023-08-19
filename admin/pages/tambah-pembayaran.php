@@ -1,16 +1,23 @@
 <?php
 $nisn = $_GET['nisn'];
 $kekurangan = $_GET['kekurangan'];
+$bulan = $_GET['bulan'];
+$tahun = $_GET['tahun'];
+
+// echo $perbulan;
 include '../koneksi.php';
 $sql = "SELECT * FROM siswa,spp,kelas WHERE siswa.id_kelas=kelas.id_kelas AND siswa.id_spp=spp.id_spp AND nisn='$nisn'";
+
+
 $query = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_array($query);
+$perbulan = $data['nominal'] / 12;
+
+
 ?>
 <a href="?url=pembayaran" class="btn btn-danger btn-icon-text">
     <i class="mdi mdi-keyboard-backspace
 "></i> Kembali </a>
-
-
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -32,46 +39,24 @@ $data = mysqli_fetch_array($query);
                 </div>
                 <div class="form-group mb-2">
                     <label>Tanggal bayar</label>
-                    <input type="date" name="tgl_bayar" class="form-control" required>
+                    <input type="date" readonly value="<?php echo date('Y-m-d') ?>" name="tgl_bayar" class="form-control" required>
                 </div>
                 <div class="form-group mb-2">
                     <label>Bulan Bayar</label>
-                    <select name="" bulan_dibayar class="form-control" required>
-                        <option value=""> Pilih Bulan Bayar</option>
-                        <option value="januari">januari</option>
-                        <option value="februari">februari</option>
-                        <option value="maret">maret</option>
-                        <option value="april">april</option>
-                        <option value="mei">mei</option>
-                        <option value="juni">juni</option>
-                        <option value="juli">juli</option>
-                        <option value="agustus">agustus</option>
-                        <option value="september">september</option>
-                        <option value="oktober">oktober</option>
-                        <option value="november">november</option>
-                        <option value="desember">desember</option>
-                    </select>
+                    <input type="text" name="bulan_bayar" class="form-control" readonly value="<?= $bulan; ?>">
                 </div>
                 <div class="form-group mb-2">
                     <label>Tahun Bayar</label>
-                    <select name="tahun_bayar" class="form-control" required>
-                        <option value=""> Pilih tahun Bayar</option>
-                        <?php
-                        for ($i = 2010; $i <= date('Y'); $i++) {
-                            echo "<option value='$i'>$i</option>";
-                        }
-                        ?>
-                    </select>
+                    <input type="text" name="tahun_bayar" class="form-control" readonly value="<?= $tahun; ?>">
                 </div>
                 <div class="formm-group mb-2">
-                    <label>jumlah Bayar (Jumlah yang harus di bayar adalah <b><?= number_format($kekurangan, 2, ',', '.') ?></b>)</label>
-                    <input type="number" name="jumlah_bayar" max="<?= $kekurangan; ?>" class="form-control" required>
+                    <label>jumlah Bayar (Jumlah yang harus di bayar adalah <b><?= number_format($perbulan, 2, ',', '.') ?></b>)</label>
+                    <input type="number" readonly value="<?= $perbulan; ?>" name="jumlah_bayar" max="<?= $kekurangan; ?>" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-gradient-primary btn-icon-text">
-                        <i class="mdi mdi-upload btn-icon-prepend"></i> Simpan </button>
-                    <button type="reset" class="btn btn-gradient-danger btn-icon-text">
-                        <i class="mdi mdi-reload btn-icon-prepend"></i> Kosongkan </button>
+                        <i class="mdi mdi-content-save-all btn-icon-prepend"></i> Simpan </button>
+
                 </div>
             </form>
         </div>
